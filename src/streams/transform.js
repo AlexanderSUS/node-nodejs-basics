@@ -1,3 +1,9 @@
+import fs from 'fs';
+import process from 'process';
+ 
 export const transform = async () => {
-    // Write your code here 
+    process.stdin.pipe(process.stdout);
+    process.stdin.resume()
 };
+
+transform();

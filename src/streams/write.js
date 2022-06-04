@@ -1,3 +1,18 @@
+import fs from 'fs';
+import process from 'process';
+import { resolve } from 'path';
+
 export const write = async () => {
-    // Write your code here 
+  const TARGET_DIR = 'src/streams/files';
+  const TARGET_FILE = 'fileToWrite.txt';
+  const FILE_URL = resolve(TARGET_DIR, TARGET_FILE);
+
+  const file = fs.createWriteStream(FILE_URL)
+
+  process.stdin.pipe(file);
+
+  process.stdin.resume();
+  
 };
+
+write();
