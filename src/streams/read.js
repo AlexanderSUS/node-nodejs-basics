@@ -1,5 +1,3 @@
-import fs from 'fs';
-import process from 'process';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 

@@ -1,5 +1,4 @@
 import fs from 'fs';
-import process from 'process';
 import { resolve } from 'path';
 
 export const write = async () => {

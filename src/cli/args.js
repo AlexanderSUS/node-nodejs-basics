@@ -1,5 +1,3 @@
-import proces from 'process';
-
 export const parseArgs = () => {
     const args = proces.argv.slice(2)
 
