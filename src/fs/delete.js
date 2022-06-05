@@ -1,11 +1,14 @@
 import fs from 'fs';
-import path from 'path';
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
 
 export const remove = async () => {
-  const BASE_URL = 'src/fs/files'
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename) 
+
   const FILE_FOR_REMOVE = 'fileToRemove.txt'
 
-  const fileUrl = path.resolve(BASE_URL, FILE_FOR_REMOVE);
+  const fileUrl = resolve(__dirname, 'files', FILE_FOR_REMOVE);
 
   if (!fs.existsSync(fileUrl)) {
     console.error(new Error('FS operation failed'));

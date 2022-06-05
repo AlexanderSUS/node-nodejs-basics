@@ -1,13 +1,16 @@
 import fs from 'fs';
-import path from 'path';
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
 
 export const copy = async () => {
-  const BASE_URL = 'src/fs';
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename) 
+
   const SOURCE = 'files';
   const DESTINATION = 'files_copy';
 
-  const getSoursePath = (fileName = '') => path.resolve(BASE_URL, SOURCE, fileName)
-  const getDestPath = (fileName = '') => path.resolve(BASE_URL, DESTINATION, fileName)
+  const getSoursePath = (fileName = '') => resolve(__dirname, SOURCE, fileName)
+  const getDestPath = (fileName = '') => resolve(__dirname, DESTINATION, fileName)
 
   if (!fs.existsSync(getSoursePath()) || fs.existsSync(getDestPath())) {
     console.error(new Error('FS operation failed'));

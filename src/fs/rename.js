@@ -1,13 +1,16 @@
 import fs from 'fs';
-import path from 'path';
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
+
 
 export const rename = async () => {
-  const URL = 'src/fs/files';
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename) 
   const OLD_NAME = 'wrongFilename.txt';
   const NEW_NAME = 'properFilename.md';
 
-  const oldSourceUrl = path.resolve(URL, OLD_NAME);
-  const newSourceUrl = path.resolve(URL, NEW_NAME);
+  const oldSourceUrl = resolve(__dirname, 'files', OLD_NAME);
+  const newSourceUrl = resolve(__dirname, 'files', NEW_NAME);
 
   if (!fs.existsSync(oldSourceUrl) || fs.existsSync(newSourceUrl)) {
     console.error(new Error('FS operation failed'));

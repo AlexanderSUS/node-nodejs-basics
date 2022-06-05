@@ -1,11 +1,14 @@
 import fs from 'fs';
-import path from 'path';
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
+
 
 export const create = async () => {
-  const BASE_URL = 'src/fs/files'
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename) 
   const FILE_NAME = 'fresh.txt';
 
-  const fileUrl = path.resolve(BASE_URL, FILE_NAME);
+  const fileUrl = resolve(__dirname, 'files', FILE_NAME);
   const content = 'I am fresh and young';
 
   if (fs.existsSync(fileUrl)) {

@@ -1,11 +1,14 @@
 import { createHash } from 'crypto'
-import path from 'path';
 import fs from 'fs';
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
 
 export const calculateHash = async () => {
-  const BASE_URL = 'src/hash/files';
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename) 
+
   const TARGET_FILE = 'fileToCalculateHashFor.txt';
-  const soursePath = path.resolve(BASE_URL, TARGET_FILE);
+  const soursePath = resolve(__dirname, 'files', TARGET_FILE);
 
   fs.readFile(soursePath, 'utf-8' , (err, data) => {
     if (err) {

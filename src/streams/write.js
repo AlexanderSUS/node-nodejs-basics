@@ -1,10 +1,12 @@
 import fs from 'fs';
-import { resolve } from 'path';
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
 
 export const write = async () => {
-  const TARGET_DIR = 'src/streams/files';
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename) 
   const TARGET_FILE = 'fileToWrite.txt';
-  const FILE_URL = resolve(TARGET_DIR, TARGET_FILE);
+  const FILE_URL = resolve(__dirname, 'files', TARGET_FILE);
 
   const file = fs.createWriteStream(FILE_URL)
 
