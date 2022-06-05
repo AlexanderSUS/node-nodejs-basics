@@ -9,12 +9,12 @@ export const create = async () => {
   const content = 'I am fresh and young';
 
   if (fs.existsSync(fileUrl)) {
-    throw new Error('FS operation failed')
+    console.error(new Error('FS operation failed'));
   } 
 
   fs.writeFile(fileUrl, content, err => {
     if (err) {
-      console.log(err)
+      console.error(new Error(err))
     }
   })
 };

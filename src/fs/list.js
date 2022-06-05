@@ -6,11 +6,13 @@ export const list = async () => {
   const soursePath = path.resolve(BASE_URL);
 
   if (!fs.existsSync(soursePath)) {
-    throw new Error('FS operation failed')
+    console.error(new Error('FS operation failed'));
   }
 
   fs.readdir(soursePath, (err, files) => {
-    if (err) throw err;
+    if (err) {
+      console.error(new Error(err));
+    };
 
     files.forEach((file) => {
         console.log(file);

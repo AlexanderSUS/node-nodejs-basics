@@ -8,11 +8,13 @@ export const remove = async () => {
   const fileUrl = path.resolve(BASE_URL, FILE_FOR_REMOVE);
 
   if (!fs.existsSync(fileUrl)) {
-    throw new Error('FS operation failed')
+    console.error(new Error('FS operation failed'));
   } 
 
   fs.unlink(fileUrl, (err) => {
-    if (err) throw err;
+    if (err) {
+      console.error(new Error(err));
+    };
   })
 };
 

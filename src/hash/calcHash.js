@@ -9,7 +9,7 @@ export const calculateHash = async () => {
 
   fs.readFile(soursePath, 'utf-8' , (err, data) => {
     if (err) {
-        throw err;
+      console.error(err);
     }
 
     const hash = createHash('sha256').update(data).digest('hex');

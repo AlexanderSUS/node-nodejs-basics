@@ -10,17 +10,21 @@ export const copy = async () => {
   const getDestPath = (fileName = '') => path.resolve(BASE_URL, DESTINATION, fileName)
 
   if (!fs.existsSync(getSoursePath()) || fs.existsSync(getDestPath())) {
-    throw new Error('FS operation failed')
+    console.error(new Error('FS operation failed'));
   }
 
   fs.mkdirSync(getDestPath());
 
   fs.readdir(getSoursePath(), (err, files) => {
-    if (err) throw err;
+    if (err) {
+      console.error(new Error(err))
+    };
 
     files.forEach((file) => {
       fs.copyFile(getSoursePath(file), getDestPath(file), (err) => {
-        if (err) throw err;
+        if (err) {
+          console.error(new Error(err))
+        };
       })
     })
   });

@@ -10,12 +10,12 @@ export const rename = async () => {
   const newSourceUrl = path.resolve(URL, NEW_NAME);
 
   if (!fs.existsSync(oldSourceUrl) || fs.existsSync(newSourceUrl)) {
-    throw new Error('FS operation failed')
+    console.error(new Error('FS operation failed'));
   }
 
   fs.rename(oldSourceUrl, newSourceUrl, (err) => {
     if (err) {
-      throw err;
+      console.error(new Error(err));
     }
   });
 };

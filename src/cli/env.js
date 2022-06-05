@@ -6,7 +6,8 @@ export const parseEnv = () => {
     const rssKeys = envKeys.filter((key) => key.startsWith(PREFIX))
 
     if (!rssKeys.length) {
-        console.error('Environment variables with RSS_ prefix has not found');
+        console.error(new Error('Environment variables with RSS_ prefix has not found'));
+
         return;
     }
 

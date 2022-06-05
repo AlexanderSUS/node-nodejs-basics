@@ -8,12 +8,12 @@ export const read = async () => {
   const soursePath = path.resolve(BASE_URL, FILE_NAME);
 
   if (!fs.existsSync(soursePath)) {
-    throw new Error('FS operation failed')
+    console.error(new Error('FS operation failed'));
   }
 
   fs.readFile(soursePath, 'utf-8' , (err, data) => {
     if (err) {
-        throw err;
+      console.error(new Error(err));
     }
 
     console.log(data);
