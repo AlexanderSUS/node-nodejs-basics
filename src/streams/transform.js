@@ -1,6 +1,25 @@
+import { Transform, pipeline } from 'stream';
+
 export const transform = async () => {
-    process.stdin.pipe(process.stdout);
-    process.stdin.resume()
+    const readable = process.stdin;
+    const writable = process.stdout;
+
+    const transformStream = new Transform({
+        transform(chunk, enc, cb) {
+            const chunkString = chunk.toString();
+
+            const revertedChunckString = chunkString.split('').reverse().join("");
+
+            this.push(revertedChunckString);
+
+            cb();
+        }
+    })
+
+    pipeline(readable, transformStream, writable, err => {
+        console.log(`Error: ${err}`);
+    })
+
 };
 
 transform();
