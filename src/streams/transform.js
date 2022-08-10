@@ -1,3 +1,6 @@
 export const transform = async () => {
-    // Write your code here 
+    process.stdin.pipe(process.stdout);
+    process.stdin.resume()
 };
+
+transform();
