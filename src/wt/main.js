@@ -1,9 +1,13 @@
 import os from 'os';
 import { Worker } from 'worker_threads';
-import path from 'path';
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
 
 export const performCalculations = async () => {
-    const WORKER_URL = path.resolve('wt', 'worker.js');
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = dirname(__filename) 
+
+    const WORKER_URL = resolve(__dirname, 'worker.js');
     const VALUE = 10;
     const result = [];
     const cpus = os.cpus().length;
@@ -31,9 +35,10 @@ export const performCalculations = async () => {
             });
         });
     }
-
-    return Promise.all(result);
+    const data = await Promise.all(result)
+    console.log(data);
 };
 
-performCalculations()
-    .then(data => console.log(data));
+performCalculations();
+
+

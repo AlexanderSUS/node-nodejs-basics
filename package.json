@@ -20,7 +20,8 @@
     "streams:transform": "node src/streams/transform.js",
     "zlib:compress": "node src/zip/compress.js",
     "zlib:decompress": "node src/zip/decompress.js",
-    "cp": "node src/cp/cp.js Hello from RSS school !"
+    "cp": "node src/cp/cp.js Hello from RSS school !",
+    "wt": "node src/wt/main.js"
   },
   "repository": {
     "type": "git",
